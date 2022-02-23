@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbs.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:hmsapi
+    username: hmsadm2
+    password: "!@Admin1234"
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 200000
+      max-lifetime: 240000
+      pool-name: oraPool
+    
+  devtools:
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
+    
+logging:
+  pattern:
+    console: '%-12.12d|%highlight(%5p)|%cyan(%50.50c)|%4.4L - %m%n'
+    file: '%-12.12d|%5p|%c|%4.4L - %m%n'
+  level:
+    root: INFO
+    jdbc:
+      sqlonly: OFF
+      sqltiming: DEBUG
+      audit: OFF
+      resultset: OFF
+      resultsettable: DEBUG
+      connection: OFF
+    log4jdbc:
+      debug: OFF
+    org:
+      springframework: INFO
+    com:
+      skg: DEBUG
+      
+jwt:
+  key: HMS_TOKEN_SECRET_KEY
+  expiredTime: 120

@@ -1,0 +1,13 @@
+server:
+  port: 8080  error:    whitelabel:      enabled: true
+
+spring:
+  http:
+    encoding:
+      force: true
+  mvc:
+    favicon:      enabled: false
+  servlet:    multipart:      max-file-size:100MB
+      max-request-size:100MB
+      
+key: e3tH5Kmy240ckrzi+9V67gf937==

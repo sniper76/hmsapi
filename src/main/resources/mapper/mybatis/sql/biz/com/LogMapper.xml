@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skg.hms.service.api.hmsmob.com.mapper.LogMapper">
+
+	<insert id="insertLog" parameterType="com.skg.hms.service.common.dto.ApiDto">
+	<selectKey keyProperty="reqSeq" resultType="java.lang.Integer" order="BEFORE">
+		SELECT IFNULL(MAX(REQ_SEQ), 0)+1 AS reqSeq
+		FROM API_LOG 
+		WHERE MBRSH_PGM_ID = #{mbrshPgmId} 
+		AND API_ID = #{apiId} 
+		AND REQ_DTM = #{reqDtm}
+	</selectKey>
+	INSERT INTO API_LOG (
+		MBRSH_PGM_ID,
+		API_ID,
+		REQ_SEQ,
+		REQ_DTM,
+		TRAC_NO,
+		ANS_CD,
+		ANS_MSG,
+		REQ_KEY,
+		REQ_DATA,
+		RES_DATA
+	)
+	VALUES (
+		#{mbrshPgmId},
+		#{apiId},
+		#{reqSeq},
+		#{reqDtm},
+		#{tracNo},
+		#{ansCd},
+		#{ansMsg},
+		#{reqKey},
+		#{reqData},
+		#{resData}
+	)	
+	</insert>
+</mapper>
